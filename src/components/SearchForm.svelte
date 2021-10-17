@@ -39,6 +39,7 @@
                 brandFilter,
                 filter,
                 conditionFilter,
+                priceFilter
         })
     }
 

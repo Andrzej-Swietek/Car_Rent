@@ -37,6 +37,7 @@
         (event.detail.brandFilter != "") && (cars = cars.filter( car => car.Brand == event.detail.brandFilter));
         (event.detail.filter != "") && (cars = cars.filter( car => car.CarName.includes(event.detail.filter) ));
         (event.detail.conditionFilter != "") && (cars = cars.filter( car => car.CarCondition.includes(event.detail.conditionFilter) ));
+        (event.detail.priceFilter != "") && (cars = cars.filter( car => parseFloat(car.Price) < parseFloat(event.detail.priceFilter) ));
     }
 
 </script>
