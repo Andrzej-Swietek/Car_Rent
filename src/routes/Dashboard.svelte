@@ -55,7 +55,9 @@ const logout = () =>{
     </section>
     
     <section class="dashboard" slot="not_authed">
-      <a href="/#/login">Login</a>
+        <div class="login-btn" in:fly="{{ y: 200, duration: 2000 }}">
+            <a href="/#/login">Login</a>
+        </div>
     </section>
     
 </Authguard>
@@ -67,6 +69,26 @@ const logout = () =>{
         --buttons-orientation: row;
         --dark: hsl(0, 0%, 15%);
     }
+.login-btn{
+    grid-column: 1 / -1;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-btn > a{ 
+    background: var(--primary);
+    padding: 2rem 5rem;
+    color: var(--bg);
+    text-decoration: none;
+    border-radius: 45px;
+    box-shadow: var(--shadow4);
+    transition: .5s;
+}
+
+.login-btn > a:hover{ 
+    background: var(--dark);
+}
 
 .dashboard {
     grid-column: 1 / -1;
@@ -159,16 +181,19 @@ nav > a::after {
 nav > a:hover {
     box-shadow: var(--shadow4);
     --bg: hsl(0, 0%, 15%);
+    /* z-index: 3; */
 }
 nav > a:hover::after{ 
     top: 1rem;
     left: 1rem;
-    z-index: 5;
+    /* z-index: 5; */
+    /* box-shadow: var(--shadow-light); */
 }
 nav > a:hover::before{ 
     top: -2rem;
     left: -1rem;
-    z-index: 5;
+    /* z-index: 5; */
+    /* box-shadow: var(--shadow-light); */
 }
 .buttons {
     width: 100%;

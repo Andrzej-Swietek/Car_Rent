@@ -1,9 +1,11 @@
 <script>
+    import { fade, fly } from 'svelte/transition';
    export let id
    export let image
    export let carName;
    export let price;
-   let counter = 0
+   export let carObject;
+   let counter = 1
 
    const changeCounter = (sign) => {
        if(sign == '-' && counter > 0)
@@ -12,8 +14,21 @@
             counter++;
    }
 
+   const bookCar = async() => {
+        if( counter >= 1 ) {
+            const payload = {
+                car_id: id,
+                time: counter,
+                user: window.sessionStorage.getItem("user_id")
+            };
+            console.log(payload);
+        }
+       
+   }
+
+
 </script>
-<div class="car">
+<div class="car" in:fly="{{ y: 200, duration: 2000 }}">
     <img src={ image } alt="car">
     <div> 
         <h1> { carName } </h1>
@@ -22,7 +37,7 @@
     <div class="submitRow">
         <div class="counter"> {counter} </div>
         <div class="btn" on:click={()=> changeCounter('-')}> <i class="fa fa-minus"></i> </div>
-        <button> Reseve </button>
+        <button on:click={bookCar}> Reseve </button>
         <div class="btn" on:click={()=> changeCounter('+')}> <i class="fa fa-plus"></i> </div>
     </div>
 </div>
