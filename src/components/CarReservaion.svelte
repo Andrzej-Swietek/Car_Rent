@@ -1,0 +1,120 @@
+<script>
+   export let id
+   export let image
+   export let carName;
+   export let price;
+   let counter = 0
+
+   const changeCounter = (sign) => {
+       if(sign == '-' && counter > 0)
+            counter--;
+        else if (sign == '+')
+            counter++;
+   }
+
+</script>
+<div class="car">
+    <img src={ image } alt="car">
+    <div> 
+        <h1> { carName } </h1>
+        <h2> { price } zł/h</h2> 
+    </div> 
+    <div class="submitRow">
+        <div class="counter"> {counter} </div>
+        <div class="btn" on:click={()=> changeCounter('-')}> <i class="fa fa-minus"></i> </div>
+        <button> Reseve </button>
+        <div class="btn" on:click={()=> changeCounter('+')}> <i class="fa fa-plus"></i> </div>
+    </div>
+</div>
+<style>
+  .car {
+        grid-column: span 4;
+        height: 100%;
+        display: flex;
+        justify-content: center; align-items: center; flex-flow: column nowrap;
+        /* border: .25em solid var(--primary); */
+    }
+
+    .car > img {
+        height: 50%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .car > div {
+        width: 100%;
+        height: 30%;
+        display: flex;
+        justify-content: center; align-items: center; flex-flow: column nowrap;
+        box-shadow: var(--shadow3);
+    }
+    .car > div > h2 { 
+        color: var(--primary);
+        margin-top: 1rem;
+    }
+    .submitRow {
+        width: 100%;
+        height: 15% !important;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        flex-flow: row nowrap !important;
+        padding-inline: 1rem;
+    }
+
+    .counter {
+        flex: 2;
+        background: var(--primary);
+        margin-right: 1rem;
+        height: 70%;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        flex-flow: row nowrap !important;
+        color: var(--bg);
+        font-weight: 900;
+        font-size: 1.6rem;
+    }
+    .btn {
+        flex: 1;
+        /* padding: .2rem; */
+        background: var(--bg);
+        box-shadow: var(--shadow4);
+        cursor: pointer;
+        border-radius: 50%;
+        border: 2px solid var(--primary);
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        flex-flow: row nowrap !important;
+        font-size: 1.5rem;
+        color: var(--primary);
+        transition: .5s;
+    }
+    .btn:hover {
+        background: var(--primary);
+        color: var(--bg);
+    }
+    button {
+        flex: 3;
+        margin-inline: .3rem;
+        background: var(--primary);
+        padding: 1rem 2rem;
+        border: 3px solid var(--primary);
+        cursor: pointer;
+        border-radius: 45px;
+        color: var(--bg);
+        position: relative;
+        transition: .5s;
+    }
+    button:hover {
+        box-shadow: var(--shadow4);
+        --bg: hsl(0, 0%, 15%);
+        background: var(--bg);
+        color: #fff;
+        z-index: 6;
+    }
+
+
+</style>
