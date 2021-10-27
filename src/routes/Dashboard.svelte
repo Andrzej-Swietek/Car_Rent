@@ -40,8 +40,10 @@ const logout = () =>{
             <h1 class="nickname" in:fly="{{ y: 200, duration: 2000 }}" > { user.nickname } </h1>
             <nav in:fly="{{ y: 200, duration: 2000 }}">
                 <a href="/#/dashboard/">Market Place</a>
-                <a href="/#/dashboard/reservations">Reservations</a>
-                <a href="/#/dashboard/reservations">Reservations</a>
+                <a href="/#/dashboard/reservations">My Reservations</a> 
+                {#if user.role == "admin"}
+                <a href="/#/dashboard/reservations">Manage Reservations</a>
+                {/if}
             </nav>
             {/if}
         </aside>

@@ -64,6 +64,17 @@
     letter-spacing: .5rem;
     }
 
+    /* ::-webkit-scrollbar-track {
+        --primary: hsl(15, 100%, 80%);
+        background: var(--primary);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 45px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        --primary: hsl(15, 100%, 40%);
+    } */
   main {
     width: 100%;
     height: 100vh;
