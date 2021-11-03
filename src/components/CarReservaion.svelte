@@ -58,11 +58,21 @@
 <style>
   .car {
         grid-column: span 4;
-        height: auto;
+        /* height: auto; */
         height: 100%;
         display: flex;
         justify-content: center; align-items: center; flex-flow: column nowrap;
         /* border: .25em solid var(--primary); */
+    }
+    @media (max-width: 700px) { 
+        .car {
+            grid-column: 1 / -1;
+        }
+    }
+    @media (min-width: 701px) and (max-width: 1400px) { 
+        .car {
+            grid-column: span 6;
+        }
     }
 
     .car > img {
@@ -155,6 +165,8 @@
         padding: 1rem;
         border: var(--primary) solid 2px;
         color: var(--primary);
+        font-family: sans-serif;
+        text-transform: uppercase;
     }    
     input[type='date']:focus{
         border: 1px solid var(--primary);

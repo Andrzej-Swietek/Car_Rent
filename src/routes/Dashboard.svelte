@@ -5,6 +5,7 @@ import avatar from '../assets/avatar.png';
 import Router from "svelte-spa-router";
 import MarketPlace from "./dashboard/MarketPlace.svelte";
 import Reservations from "./dashboard/Reservations.svelte";
+import ManageUsers from "./dashboard/ManageUsers.svelte";
 
 const user = {
     role: sessionStorage.getItem("role"),
@@ -13,12 +14,12 @@ const user = {
 const toggleNav = () => {
     navState = !navState;
     (navState)? document.body.style.setProperty('--asides-width', '3') : document.body.style.setProperty('--asides-width', '1');
-    (navState)? document.body.style.setProperty('--buttons-orientation', 'row') : document.body.style.setProperty('--buttons-orientation', 'column')
-
+    (navState)? document.body.style.setProperty('--buttons-orientation', 'row') : document.body.style.setProperty('--buttons-orientation', 'column-reverse')
 }
 let navState = true;
 const logout = () =>{
     window.sessionStorage.clear();
+    location.reload();
 }
 </script>
    
@@ -43,6 +44,7 @@ const logout = () =>{
                 <a href="/#/dashboard/reservations">My Reservations</a> 
                 {#if user.role == "admin"}
                 <a href="/#/dashboard/reservations">Manage Reservations</a>
+                <a href="/#/dashboard/manageusers">Manage Users</a>
                 {/if}
             </nav>
             {/if}
@@ -52,6 +54,7 @@ const logout = () =>{
             <Router routes={{
                 "/dashboard/": MarketPlace,
                 "/dashboard/reservations": Reservations,
+                "/dashboard/manageusers": ManageUsers
               }} />
         </main>   
     </section>

@@ -43,7 +43,7 @@
 </script>
 
 <div class="container">
-    <h1 class="welcome"> Hello { user.nickname } !!!</h1>
+    <h1 class="welcome"> [animated img] Hello { user.nickname } !!!</h1>
     <SearchForm on:filterCars={filterCarsResults} />
     <div class="results">
         {#if cars.length > 0}

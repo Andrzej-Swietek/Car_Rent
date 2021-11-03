@@ -31,11 +31,13 @@
         <div> <span> Time: </span> { Time } h</div>
         <div> <span> Status: </span> { Status } </div>
         <div> <span class="total"> TOTAL TO PAY: </span> { Price*Time } zł</div>
+
+        <div class="buttons">
+            <button on:click={cancelReservation}> Cancel </button>
+            <button class="btn"> QR Code </button>
+        </div>
     </div>
-    <div class="buttons">
-        <button on:click={cancelReservation}> Cancel </button>
-        <button class="btn"> QR Code </button>
-    </div>
+
 </div>
 
 <style>

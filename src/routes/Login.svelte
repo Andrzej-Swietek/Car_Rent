@@ -67,7 +67,8 @@
     form {
         grid-column-start: 2; 
         grid-column-end: 12;  
-        height: 50vh;
+        height: auto;
+        padding-block: 2rem;
         width: 100%;
         background: var(--primary);
         display: flex; flex-flow: column nowrap;justify-content: center; align-items: center;
@@ -87,6 +88,32 @@
         top: -50%;
         left: -10%;
     }
+
+    @media (max-width: 375px ) { 
+        form {
+            height: auto;
+            padding-block: 1rem;
+        }
+        form::after {
+            display: none;
+         }
+    }
+    @media (max-width: 667px ) { 
+        form::after {
+            display: none;
+         }
+    }
+    @media (max-width: 1200px ) { 
+        form::after {
+            display: none;
+         }
+    }
+    @media (max-width: 1500px ) { 
+        form::after {
+            display: none;
+         }
+    }
+
     label {
         width: 100%;
     }

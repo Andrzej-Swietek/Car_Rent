@@ -38,6 +38,12 @@
     --shadow3:rgba(0, 0, 0, 0.08) 0px 4px 12px;
     --shadow4:rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     --shadow-light: hsl(0, 0%, 95%) 0px 0px 10px;
+
+    --mobile: 375px;
+    --tab: 667px;
+    --bigTab: 1024px;
+    --laptop: 1200px;
+    --desktop: 1500px;
   }
 
   :global(*) {
