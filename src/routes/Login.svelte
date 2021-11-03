@@ -16,7 +16,7 @@
                 console.log(res);
                 setSesstion(res);
                 if( res.role == 'client' ){ document.location.href = '/#/dashboard'; }
-                else if ( res.role == 'admin' ) { document.location.href = '/#/admin'; } 
+                else if ( res.role == 'admin' ) { document.location.href = '/#/dashboard'; }
                 else {
 
                 }

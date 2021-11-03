@@ -6,7 +6,7 @@ import Router from "svelte-spa-router";
 import MarketPlace from "./dashboard/MarketPlace.svelte";
 import Reservations from "./dashboard/Reservations.svelte";
 import ManageUsers from "./dashboard/ManageUsers.svelte";
-
+import ManageReservations from "./dashboard/ManageReservations.svelte";
 const user = {
     role: sessionStorage.getItem("role"),
     nickname: sessionStorage.getItem("user_nickname")
@@ -43,7 +43,7 @@ const logout = () =>{
                 <a href="/#/dashboard/">Market Place</a>
                 <a href="/#/dashboard/reservations">My Reservations</a> 
                 {#if user.role == "admin"}
-                <a href="/#/dashboard/reservations">Manage Reservations</a>
+                <a href="/#/dashboard/manageReservations">Manage Reservations</a>
                 <a href="/#/dashboard/manageusers">Manage Users</a>
                 {/if}
             </nav>
@@ -54,6 +54,7 @@ const logout = () =>{
             <Router routes={{
                 "/dashboard/": MarketPlace,
                 "/dashboard/reservations": Reservations,
+                "/dashboard/manageReservations": ManageReservations,
                 "/dashboard/manageusers": ManageUsers
               }} />
         </main>   
