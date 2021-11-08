@@ -1,4 +1,6 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
+
     export let ID;
     export let Brand;
     export let Model;
@@ -11,12 +13,20 @@
     export let Time;
     export let Image;
 
+    const dispatch = createEventDispatcher();
+
     const cancelReservation = () => {
         ( async()=> {
             const res = await fetch( `http://localhost:8888/Car_Rent_Project/car_rental_app/public/backend/CancelReservation.php?reservation_id=${ID}` );
             console.log( await res.text() );
             location.reload();
         } )()
+    }
+
+    const openModal = () =>{
+        dispatch('qr-open', {
+			text: ID + ";" + Brand + ";" + Model +";" + Year
+		});
     }
 </script>
 
@@ -34,7 +44,7 @@
 
         <div class="buttons">
             <button on:click={cancelReservation}> Cancel </button>
-            <button class="btn"> QR Code </button>
+            <button class="btn" on:click={openModal}> QR Code </button>
         </div>
     </div>
 

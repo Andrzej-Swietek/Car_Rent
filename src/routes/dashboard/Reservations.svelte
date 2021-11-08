@@ -1,6 +1,7 @@
 <script>
 
 import ReservedItem from "../../components/ReservedItem.svelte";
+import QRCode from "../../components/QRJS.svelte"
 
     const user = {
     id: sessionStorage.getItem("user_id"),
@@ -16,7 +17,14 @@ import ReservedItem from "../../components/ReservedItem.svelte";
         console.log( await getMyReservations() );
     } )()
 
-    
+    $: showQRModal = false;
+    $: modalCode = "12354234562345"
+    const hideModal = ()=> showQRModal = false;
+    function handleModalOpen(event) {
+		// alert(event.detail.text);
+        modalCode = event.detail.text;
+        showQRModal = true; 
+	}
 </script>
 
 <div class="container">
@@ -38,6 +46,8 @@ import ReservedItem from "../../components/ReservedItem.svelte";
                     Status={ reservation.Status }
                     Time={ reservation.Time }
                     Image={ reservation.Image }
+
+                    on:qr-open={handleModalOpen}
                 />
             {/each}
             {:else}
@@ -47,8 +57,11 @@ import ReservedItem from "../../components/ReservedItem.svelte";
 
     {/await}
     </div>  
-
-
+    {#if showQRModal}
+        <div class="qr-modal" on:click={hideModal}>
+            <QRCode codeValue={modalCode} squareSize=200/>
+        </div>
+    {/if}
 </div>
 
 <style>
@@ -65,6 +78,22 @@ import ReservedItem from "../../components/ReservedItem.svelte";
         height: 90vh;
         overflow-y: scroll;
         padding: 2rem;
+    }
+
+    .qr-modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(25px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+    }
+    .qr-modal > * {
+        border: 0.25em solid var(--primary);
     }
 
 </style>

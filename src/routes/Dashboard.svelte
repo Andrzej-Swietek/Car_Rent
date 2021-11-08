@@ -7,6 +7,7 @@ import MarketPlace from "./dashboard/MarketPlace.svelte";
 import Reservations from "./dashboard/Reservations.svelte";
 import ManageUsers from "./dashboard/ManageUsers.svelte";
 import ManageReservations from "./dashboard/ManageReservations.svelte";
+import Settings from "./dashboard/Settings.svelte";
 const user = {
     role: sessionStorage.getItem("role"),
     nickname: sessionStorage.getItem("user_nickname")
@@ -28,7 +29,7 @@ const logout = () =>{
     <section class="dashboard" slot="authed">
         <aside>
             <div class="buttons">
-                <a class="btn" href="/#/login"><i class="fas fa-user-cog"></i></a>
+                <a class="btn" href="/#/dashboard/settings"><i class="fas fa-user-cog"></i></a>
                 <div class="btn" on:click={logout}>
                     <i class="fas fa-sign-out-alt"></i>
                 </div>
@@ -55,7 +56,8 @@ const logout = () =>{
                 "/dashboard/": MarketPlace,
                 "/dashboard/reservations": Reservations,
                 "/dashboard/manageReservations": ManageReservations,
-                "/dashboard/manageusers": ManageUsers
+                "/dashboard/manageusers": ManageUsers,
+                "/dashboard/settings": Settings
               }} />
         </main>   
     </section>

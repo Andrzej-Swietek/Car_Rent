@@ -2,20 +2,24 @@
     import Blob from "../components/Blob.svelte";
     import Footer from "../components/Footer.svelte";
     import CarDisplay from "../components/CarDisplay.svelte";
-
+    import {push} from 'svelte-spa-router'
+    const goToDashboard = () =>{
+        push('/dashboard')
+    }
 </script>
 <header>
     <div class="mini-blob">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#FF4000" d="M37.3,-56.5C48.6,-50.8,58.2,-40.9,64.3,-29C70.4,-17,73.1,-3.1,70.1,9.3C67.1,21.6,58.4,32.4,50.5,46.5C42.5,60.6,35.3,78.1,22.8,85.4C10.2,92.6,-7.6,89.6,-24.6,84.4C-41.6,79.1,-57.9,71.7,-68.2,59.3C-78.5,47,-82.9,29.8,-80.3,14.6C-77.8,-0.6,-68.3,-13.7,-61.8,-28.3C-55.3,-42.8,-51.6,-58.8,-41.8,-65.1C-32,-71.4,-16,-68,-1.5,-65.7C13,-63.4,26,-62.1,37.3,-56.5Z" transform="translate(100 100)" />
+            <path fill="var(--primary)" d="M37.3,-56.5C48.6,-50.8,58.2,-40.9,64.3,-29C70.4,-17,73.1,-3.1,70.1,9.3C67.1,21.6,58.4,32.4,50.5,46.5C42.5,60.6,35.3,78.1,22.8,85.4C10.2,92.6,-7.6,89.6,-24.6,84.4C-41.6,79.1,-57.9,71.7,-68.2,59.3C-78.5,47,-82.9,29.8,-80.3,14.6C-77.8,-0.6,-68.3,-13.7,-61.8,-28.3C-55.3,-42.8,-51.6,-58.8,-41.8,-65.1C-32,-71.4,-16,-68,-1.5,-65.7C13,-63.4,26,-62.1,37.3,-56.5Z" transform="translate(100 100)" />
           </svg>
     </div>
+    <!-- FF4000 -->
     <h1 class="title"> WELCOME TO RENT<span>CAR</span></h1>
     <Blob />
     <div id="blob-shape"></div>
     <div class="description">  
         <h1>Best <span>cars</span> for the <span>smallest</span> price </h1>
-        <button> Check Out The Offer </button>
+        <button on:click={goToDashboard}> Check Out The Offer </button>
      </div>
 </header>
 <section class="offer">
