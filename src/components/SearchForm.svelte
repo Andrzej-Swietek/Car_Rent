@@ -156,11 +156,12 @@ select:hover {
 }
 .unfloded-stuff {
     width: 100%;
-    display: flex; flex-flow: row wrap; justify-content: center; align-items: center;
+    display: flex; flex-flow: row wrap; justify-content: center; align-items: center;  
+    border-radius: 50% !important;
 }
 
 .unfoldButtton {
-    border-radius: 0 !important;
+    border-radius: 50% !important;
     transition: .5s;
 }
 #price-range {

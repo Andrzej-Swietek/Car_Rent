@@ -28,6 +28,15 @@
 			text: ID + ";" + Brand + ";" + Model +";" + Year
 		});
     }
+
+    const editDate = (e) => {
+        const newDate = e.target.value;
+        ( async()=> {
+            const res = await fetch( `http://localhost:8888/Car_Rent_Project/car_rental_app/public/backend/EditDate.php?id=${ID}&newDate=${newDate}` );
+            console.log( await res.text() );
+            location.reload();
+        } )()
+    }
 </script>
 
 <div class="reserverdItem">
@@ -36,13 +45,14 @@
         <div> <span> ID: </span> { ID } </div>  
         <div> <span> Name: </span> { Brand + " " + Model + " " + Year } </div>
         <div> <span> Car Condition: </span> { CarCondition } </div>
-        <div> <span> Date: </span> { DateStart } to { DateEnd } </div>
+        <div> <span> Date: </span> { DateStart }  </div>
         <div> <span> Price: </span> { Price } zł/h</div>
         <div> <span> Time: </span> { Time } h</div>
         <div> <span> Status: </span> { Status } </div>
         <div> <span class="total"> TOTAL TO PAY: </span> { Price*Time } zł</div>
 
         <div class="buttons">
+            <input type="date" class="newDate" value={DateStart} on:change={ editDate } /> 
             <button on:click={cancelReservation}> Cancel </button>
             <button class="btn" on:click={openModal}> QR Code </button>
         </div>
@@ -176,5 +186,18 @@
         content: '';
         border-bottom: var(--primary) solid .4rem;
 
+    }
+
+    input[type='date']{
+        accent-color: var(--primary);
+        padding: 1rem;
+        border: var(--primary) solid 2px;
+        color: var(--primary);
+        font-family: sans-serif;
+        text-transform: uppercase;
+    }    
+    input[type='date']:focus{
+        border: 1px solid var(--primary);
+        outline: 1px solid var(--primary);
     }
 </style>
